@@ -1,12 +1,10 @@
-FROM --platform=linux/arm/v7 python:3.7.10-slim-buster
-
+FROM python:3.7
 WORKDIR /app
-
-COPY requirements.txt requirements.txt
+COPY requirements.txt /app
 RUN pip3 install -r requirements.txt
 
-COPY amzncaptcha.py amzncaptcha.py
+COPY . /app
 
 EXPOSE 8080
-
-CMD [ "python3", "amzncaptcha.py" , "8080"]
+ENTRYPOINT ["python3"]
+CMD ["amzncaptcha.py", "8080"]
