@@ -1,10 +1,12 @@
-FROM python:3.7
-WORKDIR /app
-COPY requirements.txt /app
+FROM python:3.7 AS build
+
+COPY . /
 RUN pip3 install -r requirements.txt
+RUN pip3 install pyinstaller
+RUN pyinstaller /amzncaptcha.py --onefile
 
-COPY . /app
-
+FROM alpine
+COPY --from=build /dist/amzncaptcha /amzncaptcha
 EXPOSE 8080
-ENTRYPOINT ["python3"]
-CMD ["amzncaptcha.py", "8080"]
+ENTRYPOINT ["/amzncaptcha"]
+CMD ["8080"]
