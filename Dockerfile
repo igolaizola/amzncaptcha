@@ -5,7 +5,7 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install pyinstaller
 RUN pyinstaller --onefile /amzncaptcha.py
 
-FROM alpine
+FROM debian
 COPY --from=build /dist/amzncaptcha /
 EXPOSE 8080
 ENTRYPOINT ["/amzncaptcha"]
