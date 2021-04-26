@@ -1,6 +1,7 @@
 FROM python:3.7 AS build
 
 COPY . /
+WORKDIR /
 RUN pip3 install -r requirements.txt
 RUN pip3 install pyinstaller
 RUN pyinstaller /amzncaptcha.py --onefile
