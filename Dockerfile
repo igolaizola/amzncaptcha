@@ -11,5 +11,3 @@ RUN /amzncaptcha version
 EXPOSE 8080
 ENTRYPOINT ["/amzncaptcha"]
 CMD ["8080"]
-
-FROM python:3.7 AS build
