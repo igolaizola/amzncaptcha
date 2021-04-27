@@ -32,7 +32,7 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
     httpd.server_close()
     logging.info('Stopping amzncaptcha...\n')
 
-if name == '__main__':
+if __name__ == '__main__':
     from sys import argv
     if len(argv) == 2:
         if argv[1] == "version":
